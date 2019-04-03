@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Objektverwaltung</title>
+	<meta charset="utf-8" />
+	<link rel="stylesheet" type="text/css" href="css/style.css" />
+
+	<script type="text/javascript" src="js/data.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
+</head>
+<body>
+	<div id="header">
+		<div id="title">
+			<a href="" onclick="gototypeselection(); return false">Objektverwaltung</a>
+		</div>
+		<div id="information"></div>
+		<div id="buttons">
+			<span id="objectlistbutton" title="Objekt-Liste" onclick="gotoobjectlist()">
+				<img alt="Objektliste" src="icons/list.png" />
+			</span>
+			<span>
+				<input type="text" id="searchbox" onkeyup="dosearch()" style="display: none;">
+				<span id="search" title="Suche" onclick="togglesearch()">
+					<img alt="Suche" src="icons/search.png" />
+				</span>
+			</span>
+		</div>
+	</div>
+	<div id="headerplain"></div>
+	<fieldset id="content">
+		<div id="typeselection" style="/*display: none;*/">
+			<fieldset>
+				<legend>Objekt-Typen</legend>
+				<div>
+					<span id="desk" onclick="gotoobjectlist('Schreibtisch')">
+						<img alt="desk" src="icons/desk.png" />
+						<span>Schreibtisch</span>
+					</span>
+					<span id="computer" onclick="gotoobjectlist('Computer')">
+						<img alt="computer" src="icons/computer.png" />
+						<span>Computer</span>
+					</span>
+					<span id="keyboard" onclick="gotoobjectlist('Tastatur')">
+						<img alt="keyboard" src="icons/keyboard.png" />
+						<span>Tastatur</span>
+					</span>
+					<span id="server" onclick="gotoobjectlist('Server')">
+						<img alt="server" src="icons/server.png" />
+						<span>Server</span>
+					</span>
+					<span id="human" onclick="gotoobjectlist('Mensch')">
+						<img alt="human" src="icons/human.png" />
+						<span>Mensch</span>
+					</span>
+				</div>
+			</fieldset>
+		</div>
+		<div id="objectlist" style="display: none;">
+			<a href="" onclick="editobj(); return false">Objekt erstellen</a>
+			<div class="list head">
+				<div>
+					<div class="idcol">ID</div>
+					<div class="namecol">Name</div>
+					<div class="typecol">Typ</div>
+					<div class="toolscol"></div>
+				</div>
+			</div>
+			<div class="list" id="listcontent">
+			</div>
+		</div>
+		<div id="objectedit" style="display: none;">
+			<fieldset>
+				<legend>Objekt bearbeiten</legend>
+				<div class="form">
+					<div>
+						<div>Name</div>
+						<div>
+							<input type="text" id="nameInput" />
+						</div>
+					</div>
+					<div>
+						<div>Beschreibung</div>
+						<div>
+							<textarea id="descInput"></textarea>
+						</div>
+					</div>
+					<div>
+						<div>Typ</div>
+						<div>
+							<select id="typeInput"></select>
+						</div>
+					</div>
+				</div>
+				<input type="button" value="Speichern" onclick="editsave()" />
+				<input type="button" value="Abbrechen" onclick="editend()" />
+
+				<fieldset id="editrelations">
+					<legend>Relationen</legend>
+					<div>
+						Hinzuf&uuml;gen:
+						<select id="addrelation" onchange="relationadd()"></select>
+					</div>
+					<div id="relationlist" class="list">
+
+					</div>
+				</fieldset>
+			</fieldset>
+		</div>
+	</fieldset>
+	<script type="text/javascript">
+		init();
+	</script>
+</body>
+</html>
